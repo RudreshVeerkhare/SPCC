@@ -1,0 +1,8 @@
+3
+D L T
+6
+id ; : integer real ,
+3
+D=>id_L_;
+L=>,_id_L|:_T
+T=>integer|real

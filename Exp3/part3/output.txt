@@ -1,0 +1,25 @@
+Enter a string input to parse : a*a+bab
+----------------------------------------------------------------
+Symbols Stack   States Stack    Buffer          Action
+----------------------------------------------------------------
+a               04              a*a+bab$                Shift
+F               03              *a+bab$         Reduce: F->a
+F*              038             *a+bab$         Shift
+F               03              a+bab$          Reduce: F->F*
+T               02              a+bab$          Reduce: T->F
+Ta              024             a+bab$          Shift
+TF              027             +bab$           Reduce: F->a
+T               02              +bab$           Reduce: T->TF
+E               01              +bab$           Reduce: E->T
+E+              016             +bab$           Shift
+E+b             0165            bab$            Shift
+E+F             0163            ab$             Reduce: F->b
+E+T             0169            ab$             Reduce: T->F
+E+Ta            01694           ab$             Shift
+E+TF            01697           b$              Reduce: F->a
+E+T             0169            b$              Reduce: T->TF
+E+Tb            01695           b$              Shift
+E+TF            01697           $               Reduce: F->b
+E+T             0169            $               Reduce: T->TF
+E               01              $               Reduce: E->E+T
+Accepted!

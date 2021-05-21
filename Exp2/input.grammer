@@ -1,0 +1,8 @@
+3
+A B C
+3
+d e f
+3
+A=>Cd
+B=>Ce
+C=>A|B|f

@@ -1,0 +1,8 @@
+3
+S B C
+4
+a b c d
+3
+S=>B_b|C_d
+B=>ε|a_B
+C=>c_C

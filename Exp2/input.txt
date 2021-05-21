@@ -1,0 +1,8 @@
+3
+S A B
+2
+a b
+3
+S=>AB
+A=>BS|b
+B=>SS|a

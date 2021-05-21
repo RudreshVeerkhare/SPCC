@@ -1,0 +1,16 @@
+Enter string for systax analysis : i&i|i
+------------------------------------------
+Stack           Buffer          Operation
+------------------------------------------
+$               i&i|i$          Shift
+$i              &i|i$           Reduce : i=>E
+$E              &i|i$           Shift
+$E&             i|i$            Shift
+$E&i            |i$             Reduce : i=>E
+$E&E            |i$             Reduce : E&E=>E
+$E              |i$             Shift
+$E|             i$              Shift
+$E|i            $               Reduce : i=>E
+$E|E            $               Reduce : E|E=>E
+$E              $               Accepted!
+

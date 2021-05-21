@@ -1,0 +1,216 @@
+case 501: // .
+	curr = getNextChar();
+
+	 if (curr == '.'){
+		strncat(lexeme, curr, 1);
+		state = 502; // <===
+	}
+	else {
+		resetLexeme("operator");
+		state = resetState(curr);
+	}
+	break;
+case 502: // .
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 503: // [
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 504: // ]
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 505: // :
+	curr = getNextChar();
+
+	 if (curr == '='){
+		strncat(lexeme, curr, 1);
+		state = 506; // <===
+	}
+	else {
+		resetLexeme("operator");
+		state = resetState(curr);
+	}
+	break;
+case 506: // =
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 507: // +
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 508: // -
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 509: // *
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 510: // /
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 511: // %
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 512: // &
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 513: // |
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 514: // !
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 515: // <
+	curr = getNextChar();
+
+	 if (curr == '<'){
+		strncat(lexeme, curr, 1);
+		state = 516; // <===
+	}
+	else if (curr == '='){
+		strncat(lexeme, curr, 1);
+		state = 520; // <===
+	}
+	else if (curr == '>'){
+		strncat(lexeme, curr, 1);
+		state = 525; // <===
+	}
+	else {
+		resetLexeme("operator");
+		state = resetState(curr);
+	}
+	break;
+case 516: // <
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 520: // =
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 525: // >
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 517: // >
+	curr = getNextChar();
+
+	 if (curr == '>'){
+		strncat(lexeme, curr, 1);
+		state = 518; // <===
+	}
+	else if (curr == '='){
+		strncat(lexeme, curr, 1);
+		state = 524; // <===
+	}
+	else {
+		resetLexeme("operator");
+		state = resetState(curr);
+	}
+	break;
+case 518: // >
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 524: // =
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 519: // ~
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 521: // =
+	curr = getNextChar();
+
+	 if (curr == '<'){
+		strncat(lexeme, curr, 1);
+		state = 522; // <===
+	}
+	else if (curr == '>'){
+		strncat(lexeme, curr, 1);
+		state = 523; // <===
+	}
+	else {
+		resetLexeme("operator");
+		state = resetState(curr);
+	}
+	break;
+case 522: // <
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;
+case 523: // >
+	curr = getNextChar();
+
+	resetLexeme("operator");
+	state = resetState(curr);
+
+	break;

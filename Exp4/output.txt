@@ -1,0 +1,25 @@
+g++ main.cpp -o run
+./run input.grammer && rm -rf run
+
+Original Grammer : 
+D=>idL;|
+L=>,idL|:T|
+T=>integer|real|
+
+Grammer after removing Left recursion : 
+D=>idL;|
+L=>,idL|:T|
+T=>integer|real|
+
+Firsts : 
+D ==> 	{ id|idL; }
+L ==> 	{ ,|,idL }
+	{ :|:T }
+T ==> 	{ integer|integer }
+	{ real|real }
+
+Follow : 
+D ==> 	{ $|$ }
+L ==> 	{ ;|idL; }
+T ==> 	{ ;|idL; }
+

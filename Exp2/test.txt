@@ -1,0 +1,7 @@
+2
+A B
+4
+a b d e
+2
+A=>ABd|Aa|a
+B=>Be|b

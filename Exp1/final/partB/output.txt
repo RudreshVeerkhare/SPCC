@@ -1,0 +1,592 @@
+gcc main.c -o pascalLex
+./pascalLex sample.pas && rm -rf pascalLex
+[1] <keyword, UNIT, 0 >
+[1] <identifier, DayIO, 1 >
+[2] <seperator, ;, -1 >
+[11] <comment, { This unit provides a facility to input and output day of the week
+ * names.  The names are Sun, Mon, Tue, Wed, Thu, Fri, and Sat.  Such
+ * names may be read in using ReadDay, written using WriteDay.  ReadDay
+ * reads in the name, and returns it as a value of the enumerated type
+ * DayType.  The input value is case-sensitive, and must be entered
+ * exactly as given in the list above.  WriteDay takes a DayType value
+ * and prints it, using one of the string above.  There is also a
+ * function MapToDay which accepts a string containing the name of a
+ * day and maps it to a DayType value.
+ }, -1 >
+[14] <keyword, INTERFACE, 2 >
+[15] <keyword, TYPE, 3 >
+[15] <comment, { Type to represent a day of the week, or an error. }, -1 >
+[16] <identifier, DayType, 4 >
+[16] <operator, =, -1 >
+[16] <seperator, (, -1 >
+[16] <identifier, Sun, 5 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Mon, 6 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Tue, 7 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Wed, 8 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Thu, 9 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Fri, 10 >
+[16] <seperator, ,, -1 >
+[16] <identifier, Sat, 11 >
+[16] <seperator, ,, -1 >
+[16] <identifier, BadDay, 12 >
+[16] <seperator, ), -1 >
+[17] <seperator, ;, -1 >
+[23] <comment, { Convert a string to a day.  If it is not a legal day, the result is
+      BadDay.
+        Precondition: None:
+        Postcondition: If S is one of the strings Sun Mon Tue Wed Thu Fri, or
+            Sat, MapToDay returns the corresponding day.  Otherwise, it
+            returns BadDay. }, -1 >
+[24] <keyword, FUNCTION, 13 >
+[24] <identifier, MapToDay, 14 >
+[24] <seperator, (, -1 >
+[24] <identifier, S, 15 >
+[24] <operator, :, -1 >
+[24] <keyword, String, 16 >
+[24] <seperator, ), -1 >
+[24] <operator, :, -1 >
+[24] <identifier, DayType, 4 >
+[25] <seperator, ;, -1 >
+[38] <comment, { Read a day from the file.  The day must be the next item on the same
+      line.  The procedure skips leading blanks, and reads the next
+      non-blank item on the line, and returns the day read.  If there was
+      no item on the line, or the item was not a legal day, it returns
+      BadDay.
+        Precondition: InFile is open for reading.
+        Postcondition: The file has been read until the first non-blank
+            character is seen, then through the first blank character, but
+            not past the end of the current line.  If the sequence of
+            non-blank characters read matches one of the day strings
+            Sun Mon Tue Wed Thu Fri or Sat, the corresponding day of the
+            week is returned in Day.  If not, or if no non-blank characters
+            were read, the item BadDay is returned. }, -1 >
+[39] <keyword, PROCEDURE, 17 >
+[40] <identifier, ReadDay, 18 >
+[40] <seperator, (, -1 >
+[40] <keyword, VAR, 19 >
+[40] <identifier, InFile, 20 >
+[40] <operator, :, -1 >
+[40] <identifier, TEXT, 21 >
+[40] <seperator, ;, -1 >
+[40] <comment, { Input file read from. }, -1 >
+[41] <keyword, VAR, 19 >
+[41] <identifier, Day, 22 >
+[41] <operator, :, -1 >
+[41] <identifier, DayType, 4 >
+[41] <seperator, ), -1 >
+[41] <seperator, ;, -1 >
+[41] <comment, { Returned day of the week value. }, -1 >
+[46] <comment, { Write a day to the file.
+        Precondition: OutFile is open for writing.
+        Postcondition: The string of characters Sun Mon Tue Wed Thu Fri or Sat
+        corresponding the value is Day is written to OutFile. }, -1 >
+[47] <keyword, PROCEDURE, 17 >
+[48] <identifier, WriteDay, 23 >
+[48] <seperator, (, -1 >
+[48] <keyword, VAR, 19 >
+[48] <identifier, OutFile, 24 >
+[48] <operator, :, -1 >
+[48] <identifier, TEXT, 21 >
+[48] <seperator, ;, -1 >
+[48] <comment, { Input file written to. }, -1 >
+[49] <identifier, Day, 22 >
+[49] <operator, :, -1 >
+[49] <identifier, DayType, 4 >
+[49] <seperator, ), -1 >
+[49] <seperator, ;, -1 >
+[49] <comment, { Day to write. }, -1 >
+[52] <keyword, IMPLEMENTATION, 25 >
+[53] <keyword, CONST, 26 >
+[53] <comment, { Size of day strings. }, -1 >
+[54] <identifier, DaySize, 27 >
+[54] <operator, =, -1 >
+[54] <digit, 3, -1 >
+[55] <seperator, ;, -1 >
+[56] <keyword, TYPE, 3 >
+[56] <comment, { Type of a day. }, -1 >
+[57] <identifier, DayStrType, 28 >
+[57] <operator, =, -1 >
+[57] <keyword, STRING, 29 >
+[57] <operator, [, -1 >
+[57] <identifier, DaySize, 27 >
+[57] <operator, ], -1 >
+[58] <seperator, ;, -1 >
+[59] <keyword, VAR, 19 >
+[59] <comment, { Map from enumerated day type to characters. }, -1 >
+[60] <identifier, DayMap, 30 >
+[60] <operator, :, -1 >
+[60] <keyword, ARRAY, 31 >
+[60] <operator, [, -1 >
+[60] <identifier, DayType, 4 >
+[60] <operator, ], -1 >
+[60] <keyword, of, 32 >
+[60] <identifier, DayStrType, 28 >
+[61] <seperator, ;, -1 >
+[63] <comment, { Convert a string to a day.  If it is not a legal day, the result is
+      BadDay. }, -1 >
+[64] <keyword, FUNCTION, 13 >
+[64] <identifier, MapToDay, 14 >
+[64] <seperator, (, -1 >
+[64] <identifier, S, 15 >
+[64] <operator, :, -1 >
+[64] <keyword, String, 16 >
+[64] <seperator, ), -1 >
+[64] <operator, :, -1 >
+[64] <identifier, DayType, 4 >
+[65] <seperator, ;, -1 >
+[66] <keyword, VAR, 19 >
+[66] <identifier, Day, 22 >
+[66] <operator, :, -1 >
+[66] <identifier, DayType, 4 >
+[66] <seperator, ;, -1 >
+[66] <comment, { Scanner. }, -1 >
+[67] <identifier, Found, 33 >
+[67] <operator, :, -1 >
+[67] <identifier, boolean, 34 >
+[67] <seperator, ;, -1 >
+[67] <comment, { Tell if a match was found. }, -1 >
+[69] <keyword, BEGIN, 35 >
+[69] <identifier, Found, 33 >
+[69] <operator, :=, -1 >
+[69] <keyword, FALSE, 36 >
+[70] <seperator, ;, -1 >
+[70] <identifier, Day, 22 >
+[70] <operator, :=, -1 >
+[70] <identifier, Sun, 5 >
+[71] <seperator, ;, -1 >
+[71] <keyword, WHILE, 37 >
+[71] <seperator, (, -1 >
+[71] <identifier, Day, 22 >
+[71] <operator, <, -1 >
+[71] <identifier, BadDay, 12 >
+[71] <seperator, ), -1 >
+[71] <keyword, AND, 38 >
+[71] <keyword, NOT, 39 >
+[71] <identifier, Found, 33 >
+[72] <keyword, DO, 40 >
+[73] <keyword, BEGIN, 35 >
+[73] <keyword, IF, 41 >
+[73] <identifier, DayMap, 30 >
+[73] <operator, [, -1 >
+[73] <identifier, Day, 22 >
+[73] <operator, ], -1 >
+[73] <operator, =, -1 >
+[73] <identifier, S, 15 >
+[74] <keyword, THEN, 42 >
+[74] <identifier, Found, 33 >
+[74] <operator, :=, -1 >
+[75] <keyword, TRUE, 43 >
+[76] <keyword, ELSE, 44 >
+[76] <identifier, Day, 22 >
+[76] <operator, :=, -1 >
+[76] <identifier, succ, 45 >
+[76] <seperator, (, -1 >
+[76] <identifier, Day, 22 >
+[77] <seperator, ), -1 >
+[77] <keyword, END, 46 >
+[78] <seperator, ;, -1 >
+[79] <identifier, MapToDay, 14 >
+[79] <operator, :=, -1 >
+[80] <identifier, Day, 22 >
+[80] <keyword, END, 46 >
+[81] <seperator, ;, -1 >
+[86] <comment, { Read one character, but do not read past the end of line.  Just
+      return a space.
+        Pre: InFile is open for reading.
+        Post: If InFile was at eoln, Ch is set to ' ', and InFile is
+            unchanged.  Otherwise, one character is read from InFile to Ch. }, -1 >
+[87] <keyword, PROCEDURE, 17 >
+[87] <identifier, ReadOnLine, 47 >
+[87] <seperator, (, -1 >
+[87] <keyword, VAR, 19 >
+[87] <identifier, InFile, 20 >
+[87] <operator, :, -1 >
+[87] <identifier, TEXT, 21 >
+[87] <seperator, ;, -1 >
+[87] <keyword, VAR, 19 >
+[87] <identifier, Ch, 48 >
+[87] <operator, :, -1 >
+[87] <identifier, Char, 49 >
+[87] <seperator, ), -1 >
+[88] <seperator, ;, -1 >
+[89] <keyword, BEGIN, 35 >
+[89] <keyword, IF, 41 >
+[89] <identifier, eoln, 50 >
+[89] <seperator, (, -1 >
+[89] <identifier, InFile, 20 >
+[89] <seperator, ), -1 >
+[89] <keyword, THEN, 42 >
+[90] <identifier, Ch, 48 >
+[90] <operator, :=, -1 >
+[90] <string, ' ', -1 >
+[91] <keyword, ELSE, 44 >
+[92] <identifier, read, 51 >
+[92] <seperator, (, -1 >
+[92] <identifier, InFile, 20 >
+[92] <seperator, ,, -1 >
+[92] <identifier, Ch, 48 >
+[93] <seperator, ), -1 >
+[93] <keyword, END, 46 >
+[94] <seperator, ;, -1 >
+[99] <comment, { Read a day from the file.  The day must be the next item on the same
+      line.  The procedure skips leading blanks, and reads the next
+      non-blank item on the line, and returns the day read.  If there was
+      no item on the line, or the item was not a legal day, it returns
+      BadDay. }, -1 >
+[100] <keyword, PROCEDURE, 17 >
+[101] <identifier, ReadDay, 18 >
+[101] <seperator, (, -1 >
+[101] <keyword, VAR, 19 >
+[101] <identifier, InFile, 20 >
+[101] <operator, :, -1 >
+[101] <identifier, TEXT, 21 >
+[101] <seperator, ;, -1 >
+[101] <comment, { Input file read from. }, -1 >
+[102] <keyword, VAR, 19 >
+[102] <identifier, Day, 22 >
+[102] <operator, :, -1 >
+[102] <identifier, DayType, 4 >
+[102] <seperator, ), -1 >
+[102] <seperator, ;, -1 >
+[102] <comment, { Returned day of the week value. }, -1 >
+[104] <keyword, VAR, 19 >
+[104] <identifier, Ch, 48 >
+[104] <operator, :, -1 >
+[104] <identifier, char, 52 >
+[104] <seperator, ;, -1 >
+[104] <comment, { Input character. }, -1 >
+[105] <identifier, DayStr, 53 >
+[105] <operator, :, -1 >
+[105] <identifier, DayStrType, 28 >
+[105] <seperator, ;, -1 >
+[105] <comment, { Input string of chars. }, -1 >
+[107] <keyword, BEGIN, 35 >
+[107] <comment, { Skip blanks. }, -1 >
+[108] <identifier, Ch, 48 >
+[108] <operator, :=, -1 >
+[108] <string, ' ', -1 >
+[109] <seperator, ;, -1 >
+[109] <keyword, WHILE, 37 >
+[109] <seperator, (, -1 >
+[109] <identifier, Ch, 48 >
+[109] <operator, =, -1 >
+[109] <string, ' ', -1 >
+[109] <seperator, ), -1 >
+[109] <keyword, AND, 38 >
+[109] <keyword, NOT, 39 >
+[109] <identifier, eoln, 50 >
+[109] <seperator, (, -1 >
+[109] <identifier, InFile, 20 >
+[109] <seperator, ), -1 >
+[110] <keyword, DO, 40 >
+[111] <keyword, BEGIN, 35 >
+[111] <identifier, read, 51 >
+[111] <seperator, (, -1 >
+[111] <identifier, InFile, 20 >
+[111] <seperator, ,, -1 >
+[111] <identifier, Ch, 48 >
+[112] <seperator, ), -1 >
+[112] <keyword, END, 46 >
+[113] <seperator, ;, -1 >
+[114] <comment, { See if we found a non-blank character. }, -1 >
+[115] <keyword, IF, 41 >
+[115] <identifier, Ch, 48 >
+[115] <operator, =, -1 >
+[115] <string, ' ', -1 >
+[115] <keyword, THEN, 42 >
+[116] <comment, { The skip loop must have ended at eoln. }, -1 >
+[117] <identifier, Day, 22 >
+[117] <operator, :=, -1 >
+[118] <identifier, BadDay, 12 >
+[118] <keyword, ELSE, 44 >
+[120] <keyword, BEGIN, 35 >
+[120] <comment, { Read the characters. }, -1 >
+[121] <identifier, DayStr, 53 >
+[121] <operator, :=, -1 >
+[121] <string, '', -1 >
+[122] <seperator, ;, -1 >
+[122] <keyword, WHILE, 37 >
+[122] <seperator, (, -1 >
+[122] <identifier, Ch, 48 >
+[122] <operator, <>, -1 >
+[122] <string, ' ', -1 >
+[122] <seperator, ), -1 >
+[122] <keyword, AND, 38 >
+[122] <seperator, (, -1 >
+[122] <identifier, Length, 54 >
+[122] <seperator, (, -1 >
+[122] <identifier, DayStr, 53 >
+[122] <seperator, ), -1 >
+[122] <operator, <, -1 >
+[122] <identifier, DaySize, 27 >
+[122] <seperator, ), -1 >
+[123] <keyword, DO, 40 >
+[124] <keyword, BEGIN, 35 >
+[124] <identifier, DayStr, 53 >
+[124] <operator, :=, -1 >
+[124] <identifier, DayStr, 53 >
+[124] <operator, +, -1 >
+[124] <identifier, Ch, 48 >
+[124] <seperator, ;, -1 >
+[125] <identifier, ReadOnLine, 47 >
+[125] <seperator, (, -1 >
+[125] <identifier, InFile, 20 >
+[125] <seperator, ,, -1 >
+[125] <identifier, Ch, 48 >
+[126] <seperator, ), -1 >
+[126] <keyword, END, 46 >
+[127] <seperator, ;, -1 >
+[128] <comment, { Match must be exact. }, -1 >
+[129] <keyword, IF, 41 >
+[129] <identifier, Ch, 48 >
+[129] <operator, <>, -1 >
+[129] <string, ' ', -1 >
+[130] <keyword, THEN, 42 >
+[130] <comment, { Something else out there.  Not good. }, -1 >
+[131] <identifier, Day, 22 >
+[131] <operator, :=, -1 >
+[132] <identifier, BadDay, 12 >
+[133] <keyword, ELSE, 44 >
+[134] <keyword, BEGIN, 35 >
+[134] <comment, { Discard any remaining characters. }, -1 >
+[135] <keyword, WHILE, 37 >
+[135] <seperator, (, -1 >
+[135] <identifier, Ch, 48 >
+[135] <operator, <>, -1 >
+[135] <string, ' ', -1 >
+[135] <seperator, ), -1 >
+[135] <keyword, AND, 38 >
+[135] <keyword, NOT, 39 >
+[135] <identifier, eoln, 50 >
+[135] <seperator, (, -1 >
+[135] <identifier, InFile, 20 >
+[135] <seperator, ), -1 >
+[135] <keyword, DO, 40 >
+[136] <identifier, read, 51 >
+[136] <seperator, (, -1 >
+[136] <identifier, InFile, 20 >
+[136] <seperator, ,, -1 >
+[136] <identifier, Ch, 48 >
+[136] <seperator, ), -1 >
+[137] <seperator, ;, -1 >
+[138] <comment, { Map the string to the enum. }, -1 >
+[139] <identifier, Day, 22 >
+[139] <operator, :=, -1 >
+[139] <identifier, MapToDay, 14 >
+[139] <seperator, (, -1 >
+[139] <identifier, DayStr, 53 >
+[140] <seperator, ), -1 >
+[141] <keyword, END, 46 >
+[142] <keyword, END, 46 >
+[142] <keyword, END, 46 >
+[143] <seperator, ;, -1 >
+[144] <comment, { Write a day to the file. }, -1 >
+[145] <keyword, PROCEDURE, 17 >
+[146] <identifier, WriteDay, 23 >
+[146] <seperator, (, -1 >
+[146] <keyword, VAR, 19 >
+[146] <identifier, OutFile, 24 >
+[146] <operator, :, -1 >
+[146] <identifier, TEXT, 21 >
+[146] <seperator, ;, -1 >
+[146] <comment, { Input file written to. }, -1 >
+[147] <identifier, Day, 22 >
+[147] <operator, :, -1 >
+[147] <identifier, DayType, 4 >
+[147] <seperator, ), -1 >
+[147] <seperator, ;, -1 >
+[147] <comment, { Day to write. }, -1 >
+[149] <keyword, BEGIN, 35 >
+[149] <identifier, write, 55 >
+[149] <seperator, (, -1 >
+[149] <identifier, OutFile, 24 >
+[149] <seperator, ,, -1 >
+[149] <identifier, DayMap, 30 >
+[149] <operator, [, -1 >
+[149] <identifier, Day, 22 >
+[149] <operator, ], -1 >
+[150] <seperator, ), -1 >
+[150] <keyword, END, 46 >
+[151] <seperator, ;, -1 >
+[153] <keyword, BEGIN, 35 >
+[155] <comment, { Initialize the DayMap.  This is an easy way to convert
+           DayType values to strings.  It is used internally by the
+           unit. }, -1 >
+[156] <identifier, DayMap, 30 >
+[156] <operator, [, -1 >
+[156] <identifier, Sun, 5 >
+[156] <operator, ], -1 >
+[156] <operator, :=, -1 >
+[156] <string, 'Sun', -1 >
+[157] <seperator, ;, -1 >
+[157] <identifier, DayMap, 30 >
+[157] <operator, [, -1 >
+[157] <identifier, Mon, 6 >
+[157] <operator, ], -1 >
+[157] <operator, :=, -1 >
+[157] <string, 'Mon', -1 >
+[158] <seperator, ;, -1 >
+[158] <identifier, DayMap, 30 >
+[158] <operator, [, -1 >
+[158] <identifier, Tue, 7 >
+[158] <operator, ], -1 >
+[158] <operator, :=, -1 >
+[158] <string, 'Tue', -1 >
+[159] <seperator, ;, -1 >
+[159] <identifier, DayMap, 30 >
+[159] <operator, [, -1 >
+[159] <identifier, Wed, 8 >
+[159] <operator, ], -1 >
+[159] <operator, :=, -1 >
+[159] <string, 'Wed', -1 >
+[160] <seperator, ;, -1 >
+[160] <identifier, DayMap, 30 >
+[160] <operator, [, -1 >
+[160] <identifier, Thu, 9 >
+[160] <operator, ], -1 >
+[160] <operator, :=, -1 >
+[160] <string, 'Thu', -1 >
+[161] <seperator, ;, -1 >
+[161] <identifier, DayMap, 30 >
+[161] <operator, [, -1 >
+[161] <identifier, Fri, 10 >
+[161] <operator, ], -1 >
+[161] <operator, :=, -1 >
+[161] <string, 'Fri', -1 >
+[162] <seperator, ;, -1 >
+[162] <identifier, DayMap, 30 >
+[162] <operator, [, -1 >
+[162] <identifier, Sat, 11 >
+[162] <operator, ], -1 >
+[162] <operator, :=, -1 >
+[162] <string, 'Sat', -1 >
+[163] <seperator, ;, -1 >
+[163] <identifier, DayMap, 30 >
+[163] <operator, [, -1 >
+[163] <identifier, BadDay, 12 >
+[163] <operator, ], -1 >
+[163] <operator, :=, -1 >
+[163] <string, '***', -1 >
+[164] <seperator, ;, -1 >
+[164] <keyword, END, 46 >
+
+==========================================
+Type 			Id	Value
+==========================================
+keyword		| 0	|UNIT
+------------------------------------------
+identifier		| 1	|DayIO
+------------------------------------------
+keyword		| 2	|INTERFACE
+------------------------------------------
+keyword		| 3	|TYPE
+------------------------------------------
+identifier		| 4	|DayType
+------------------------------------------
+identifier		| 5	|Sun
+------------------------------------------
+identifier		| 6	|Mon
+------------------------------------------
+identifier		| 7	|Tue
+------------------------------------------
+identifier		| 8	|Wed
+------------------------------------------
+identifier		| 9	|Thu
+------------------------------------------
+identifier		| 10	|Fri
+------------------------------------------
+identifier		| 11	|Sat
+------------------------------------------
+identifier		| 12	|BadDay
+------------------------------------------
+keyword		| 13	|FUNCTION
+------------------------------------------
+identifier		| 14	|MapToDay
+------------------------------------------
+identifier		| 15	|S
+------------------------------------------
+keyword		| 16	|String
+------------------------------------------
+keyword		| 17	|PROCEDURE
+------------------------------------------
+identifier		| 18	|ReadDay
+------------------------------------------
+keyword		| 19	|VAR
+------------------------------------------
+identifier		| 20	|InFile
+------------------------------------------
+identifier		| 21	|TEXT
+------------------------------------------
+identifier		| 22	|Day
+------------------------------------------
+identifier		| 23	|WriteDay
+------------------------------------------
+identifier		| 24	|OutFile
+------------------------------------------
+keyword		| 25	|IMPLEMENTATION
+------------------------------------------
+keyword		| 26	|CONST
+------------------------------------------
+identifier		| 27	|DaySize
+------------------------------------------
+identifier		| 28	|DayStrType
+------------------------------------------
+keyword		| 29	|STRING
+------------------------------------------
+identifier		| 30	|DayMap
+------------------------------------------
+keyword		| 31	|ARRAY
+------------------------------------------
+keyword		| 32	|of
+------------------------------------------
+identifier		| 33	|Found
+------------------------------------------
+identifier		| 34	|boolean
+------------------------------------------
+keyword		| 35	|BEGIN
+------------------------------------------
+keyword		| 36	|FALSE
+------------------------------------------
+keyword		| 37	|WHILE
+------------------------------------------
+keyword		| 38	|AND
+------------------------------------------
+keyword		| 39	|NOT
+------------------------------------------
+keyword		| 40	|DO
+------------------------------------------
+keyword		| 41	|IF
+------------------------------------------
+keyword		| 42	|THEN
+------------------------------------------
+keyword		| 43	|TRUE
+------------------------------------------
+keyword		| 44	|ELSE
+------------------------------------------
+identifier		| 45	|succ
+------------------------------------------
+keyword		| 46	|END
+------------------------------------------
+identifier		| 47	|ReadOnLine
+------------------------------------------
+identifier		| 48	|Ch
+------------------------------------------
+identifier		| 49	|Char
+------------------------------------------
+identifier		| 50	|eoln
+------------------------------------------
+identifier		| 51	|read
+------------------------------------------
+identifier		| 52	|char
+------------------------------------------
+identifier		| 53	|DayStr
+------------------------------------------
+identifier		| 54	|Length
+------------------------------------------
+identifier		| 55	|write
+------------------------------------------
